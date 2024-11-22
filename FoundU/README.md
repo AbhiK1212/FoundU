@@ -1,50 +1,123 @@
+FoundU - Lost UCard Finder App
 
-# TypeScript
+FoundU is a full-stack mobile application designed to help recover lost university identification cards (UCards) for students. The app enables users to take a photo of a found UCard, automatically detect the student's name using Google Vision API, and then notify the rightful owner by email. Using Puppeteer, the app automates the process of extracting email addresses from a university directory.
 
-[![GitHub Actions CI](https://github.com/microsoft/TypeScript/workflows/CI/badge.svg)](https://github.com/microsoft/TypeScript/actions?query=workflow%3ACI)
-[![npm version](https://badge.fury.io/js/typescript.svg)](https://www.npmjs.com/package/typescript)
-[![Downloads](https://img.shields.io/npm/dm/typescript.svg)](https://www.npmjs.com/package/typescript)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/microsoft/TypeScript/badge)](https://securityscorecards.dev/viewer/?uri=github.com/microsoft/TypeScript)
+Table of Contents
 
+Features
 
-[TypeScript](https://www.typescriptlang.org/) is a language for application-scale JavaScript. TypeScript adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS. TypeScript compiles to readable, standards-based JavaScript. Try it out at the [playground](https://www.typescriptlang.org/play/), and stay up to date via [our blog](https://blogs.msdn.microsoft.com/typescript) and [Twitter account](https://twitter.com/typescript).
+Technologies Used
 
-Find others who are using TypeScript at [our community page](https://www.typescriptlang.org/community/).
+Installation
 
-## Installing
+Usage
 
-For the latest stable version:
+Contributing
 
-```bash
-npm install -D typescript
-```
+License
 
-For our nightly builds:
+Features
 
-```bash
-npm install -D typescript@next
-```
+Capture a picture of the found UCard.
 
-## Contribute
+Extract the student's name using Google Vision API.
 
-There are many ways to [contribute](https://github.com/microsoft/TypeScript/blob/main/CONTRIBUTING.md) to TypeScript.
-* [Submit bugs](https://github.com/microsoft/TypeScript/issues) and help us verify fixes as they are checked in.
-* Review the [source code changes](https://github.com/microsoft/TypeScript/pulls).
-* Engage with other TypeScript users and developers on [StackOverflow](https://stackoverflow.com/questions/tagged/typescript).
-* Help each other in the [TypeScript Community Discord](https://discord.gg/typescript).
-* Join the [#typescript](https://twitter.com/search?q=%23TypeScript) discussion on Twitter.
-* [Contribute bug fixes](https://github.com/microsoft/TypeScript/blob/main/CONTRIBUTING.md).
+Scrape email addresses from the university directory using Puppeteer.
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see
-the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com)
-with any additional questions or comments.
+Send emails to the detected student to inform them of their lost UCard.
 
-## Documentation
+Provide the user with options on whether they kept or left the card at a particular location.
 
-*  [TypeScript in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
-*  [Programming handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
-*  [Homepage](https://www.typescriptlang.org/)
+Technologies Used
 
-## Roadmap
+Frontend (Mobile App)
 
-For details on our planned features and future direction, please refer to our [roadmap](https://github.com/microsoft/TypeScript/wiki/Roadmap).
+React Native: For building the cross-platform mobile application.
+
+Expo: To simplify development and deployment for Android and iOS.
+
+React Native Elements: For reusable UI components.
+
+Google Vision API: For Optical Character Recognition (OCR) to detect the name from the UCard image.
+
+Backend
+
+Node.js and Express.js: For setting up the server to handle image uploads and send emails.
+
+Multer: For handling file uploads in Node.js.
+
+Nodemailer: For sending email notifications to students.
+
+Puppeteer: For scraping email addresses from the university directory.
+
+Environment Management
+
+dotenv: For managing sensitive credentials and API keys.
+
+Installation
+
+Prerequisites
+
+Node.js and npm or yarn installed on your machine.
+
+Expo CLI installed globally: npm install -g expo-cli.
+
+Clone the Repository
+
+$ git clone https://github.com/username/FoundU.git
+$ cd FoundU
+
+Install Dependencies
+
+Backend
+
+$ cd server
+$ npm install
+
+Frontend
+
+$ cd ../client
+$ npm install
+
+Set Up Environment Variables
+
+Create a .env file in the server folder with the following values:
+
+GMAIL_USER=your-email@gmail.com
+GMAIL_APP_PASSWORD=your-app-password
+API_KEY=your-google-vision-api-key
+
+Usage
+
+Running the Backend Server
+
+$ cd server
+$ npm start
+
+The server will start on http://localhost:3000.
+
+Running the Mobile App
+
+$ cd client
+$ expo start
+
+Scan the QR code to run the app on your mobile device via Expo Go.
+
+Project Flow
+
+Capture the UCard Image: The app prompts the user to take a photo of the found UCard.
+
+Detect the Name: The Google Vision API extracts the name from the card.
+
+Retrieve Student Email: The name is sent to the backend, which scrapes the university directory using Puppeteer to get the student's email.
+
+Send Notification: An email is sent to the student, notifying them of their lost UCard, with additional details such as location and contact information.
+
+Contributing
+
+FoundU is open for contributions. If you would like to contribute, feel free to submit a pull request. Please make sure your code follows the project's standards.
+
+License
+
+This project is licensed under the MIT License.
+
